@@ -1,21 +1,44 @@
+import React, { useRef, useState, useEffect } from "react";
 import { FaSearch, FaUserAlt, FaTrophy } from "react-icons/fa";
-import { SlSettings } from "react-icons/sl";
+import LogoWeb from "../sharedVar/LogoWeb2";
+import ProfileDropdown from "./ProfileDropdown";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const userRef = useRef(null);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        !userRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <header className="w-full bg-white shadow-sm px-4 py-3 flex items-center justify-between rounded-b-xl">
+    <header className="w-full bg-white shadow-sm px-4 py-3 flex items-center justify-between relative">
+      {/* Kiri: Logo & Navigasi */}
       <div className="flex items-center gap-6">
-        <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
+        <LogoWeb />
         <nav className="flex items-center gap-5 text-sm font-medium text-black">
-          <a href="#" className="text-blue-600 underline">Home</a>
-          <a href="#">Study</a>
-          <a href="#">Save</a>
-          <a href="#">Services</a>
-          <a href="#">Chat AI</a>
+          <a href="/home">Home</a>
+          <a href="/study">Study</a>
+          <a href="/save">Save</a>
+          <a href="/article">Article</a>
+          <a href="/chatai">Chat AI</a>
         </nav>
       </div>
 
-      <div className="flex items-center gap-3">
+      {/* Kanan: Search, Trophy, User */}
+      <div className="flex items-center gap-3 relative">
         <div className="relative">
           <input
             type="text"
@@ -25,20 +48,17 @@ const Navbar = () => {
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
 
-        <button className="bg-blue-500 p-2 rounded-full text-white">
-          <SlSettings size={16} />
-        </button>
+        <FaTrophy className="text-gray-700 text-2xl" />
 
-        <div className="bg-blue-500 px-3 py-1 rounded-lg text-white text-xs flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full border-2 border-white bg-green-400"></div>
-          <div>
-            <div className="font-bold text-[10px]">level 7</div>
-            <div className="text-[10px]">XP 4.045 / 5.000 xp</div>
-          </div>
+        <div ref={userRef} onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
+          <FaUserAlt className="text-gray-700 text-2xl" />
         </div>
 
-        <FaTrophy className="text-gray-700" />
-        <FaUserAlt className="text-gray-700" />
+        {isOpen && (
+          <div ref={dropdownRef} className="absolute right-0 top-16 z-50">
+            <ProfileDropdown />
+          </div>
+        )}
       </div>
     </header>
   );

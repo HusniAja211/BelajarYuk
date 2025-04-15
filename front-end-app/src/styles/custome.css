@@ -1,0 +1,10 @@
+.text-title {
+  white-space: normal; /* Memungkinkan teks untuk dibungkus */
+  word-wrap: break-word; /* Memecah kata panjang agar tidak meluap */
+  word-break: break-word; /* Memecah kata di tengah jika terlalu panjang */
+  max-width: 100px; /* Batas lebar untuk menghindari teks terlalu lebar */
+  overflow: hidden; /* Menyembunyikan teks yang meluap */
+  text-overflow: ellipsis; /* Menambahkan elipsis ('...') jika teks terlalu panjang */
+  display: block; /* Agar element dapat dibungkus */
+  text-align: center; /* Memastikan teks berada di tengah */
+}
