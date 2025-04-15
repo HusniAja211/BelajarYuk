@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"; // ← Import Link
 const ArticleCard = ({ id, title, author, date, img }) => {
   return (
     <Link
-      to={`/articleDetail/${id}`} // ← Navigasi ke path dengan 'id' sebagai parameter
+      to={`/article/${id}`}
       className="block"
     >
       <div className="flex gap-4 p-2 bg-white rounded shadow hover:shadow-lg transition">
