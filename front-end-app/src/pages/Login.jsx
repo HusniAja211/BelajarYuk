@@ -1,6 +1,6 @@
 import React from "react";
+import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa"; // Tambahkan ini
 import bgImage from "../assets/bg-1.png";  // Pastikan path ini benar
-import logos from "../sharedVar/logos"; // Import logo dari sharedVar
 import SocialButton from "../utils/socialsButton"; // Import komponen SocialButton dari utils
 import LogoWeb from "../sharedVar/LogoWeb"; // Import logo dari sharedVar
 
@@ -22,7 +22,7 @@ function Login() {
           Buat impianmu jadi <br /> nyata...
         </h2>
         <p className="text-xs text-gray-300">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+        Belajar Lebih Mudah, Sesuai Gaya Kamu!
         </p>
       </div>
     </aside>
@@ -74,9 +74,9 @@ function Login() {
         </div>
 
         <div className="space-y-2">
-          <SocialButton icon={logos.google} text="Log In with Google" />
-          <SocialButton icon={logos.facebook} text="Log In with Facebook" />
-          <SocialButton icon={logos.apple} text="Log In with Apple" />
+        <SocialButton icon={<FaGoogle />} text="Log In with Google" />
+        <SocialButton icon={<FaFacebookF />} text="Log In with Facebook" />
+        <SocialButton icon={<FaApple />} text="Log In with Apple" />
         </div>
       </form>
 

@@ -1,5 +1,5 @@
 // Base URL untuk assets
-const baseAssetURL = "/assets/icon/";
+const baseAssetURL = "../assets/icon/";
 
 // Daftar logo dengan path relatif
 const logos = {
